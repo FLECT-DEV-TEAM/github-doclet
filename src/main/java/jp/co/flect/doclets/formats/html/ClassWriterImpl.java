@@ -187,6 +187,9 @@ public class ClassWriterImpl extends SubWriterHolderWriter
 			return null;
 		}
 		String name = classDoc.name();
+		if (name.indexOf(".") != -1) {
+			return null;
+		}
 		if (classDoc.containingPackage() != null) {
 			name = classDoc.containingPackage().name() + "." + name;
 		}
