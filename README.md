@@ -1,16 +1,16 @@
-* Github Doclet
+# Github Doclet
 
 A custom doclet each class pages have link to github.
 
-** Usage
-*** javadoc command
+## Usage
+### javadoc command
 Use javadoc command with following parameters.
 
 - docletpath - Path to githubDoclet-1.0.jar
 - doclet - jp.co.flect.doclets.github.Standard
 - github - Path to github source(e.g. https://github.com/shunjikonishi/flectCommon/tree/master/src/main/java)
 
-*** Maven
+### Maven
 Add following repository and plugin.
 
     <repositories>
