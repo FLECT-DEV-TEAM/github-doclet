@@ -114,6 +114,7 @@ public class HtmlDoclet extends AbstractDoclet {
         Util.copyResourceFile(configuration, "tab.gif", false);
         Util.copyResourceFile(configuration, "titlebar.gif", false);
         Util.copyResourceFile(configuration, "titlebar_end.gif", false);
+        Util.copyResourceFile(configuration, "octocat.png", false);
         // do early to reduce memory footprint
         if (configuration.classuse) {
             ClassUseWriter.generate(configuration, classtree);

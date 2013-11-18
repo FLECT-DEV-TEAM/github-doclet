@@ -36,7 +36,6 @@ public class Standard {
     }
 
     public static boolean start(RootDoc root) {
-System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!! start !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         return HtmlDoclet.start(root);
     }
 

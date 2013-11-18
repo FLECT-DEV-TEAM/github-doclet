@@ -187,6 +187,8 @@ public class ConfigurationImpl extends Configuration {
     public ClassDoc currentcd = null;  // Set this classdoc in the
     // ClassWriter.
 
+    public String github = null;
+    
     /**
      * Constructor. Initialises resource for the
      * {@link jp.co.flect.doclets.MessageRetriever}.
@@ -266,6 +268,8 @@ public class ConfigurationImpl extends Configuration {
                 nooverview = true;
             } else if (opt.equals("-overview")) {
                 overview = true;
+            } else if (opt.equals("-github")) {
+                github = os[1];
             }
         }
         if (root.specifiedClasses().length > 0) {
@@ -330,7 +334,8 @@ public class ConfigurationImpl extends Configuration {
                    option.equals("-stylesheetfile") ||
                    option.equals("-charset") ||
                    option.equals("-overview") ||
-                   option.equals("-xdocrootparent")) {
+                   option.equals("-xdocrootparent") ||
+                   option.equals("-github")) {
             return 2;
         } else {
             return 0;
