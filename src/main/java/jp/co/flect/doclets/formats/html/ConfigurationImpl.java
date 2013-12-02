@@ -188,6 +188,8 @@ public class ConfigurationImpl extends Configuration {
     // ClassWriter.
 
     public String github = null;
+    public boolean github_inline = false;
+    public boolean github_member = false;
     
     /**
      * Constructor. Initialises resource for the
@@ -270,6 +272,10 @@ public class ConfigurationImpl extends Configuration {
                 overview = true;
             } else if (opt.equals("-github")) {
                 github = os[1];
+            } else if (opt.equals("-github.inline")) {
+                github_inline = true;
+            } else if (opt.equals("-github.member")) {
+                github_member = true;
             }
         }
         if (root.specifiedClasses().length > 0) {
@@ -318,7 +324,9 @@ public class ConfigurationImpl extends Configuration {
             option.equals("-serialwarn") ||
             option.equals("-use") ||
             option.equals("-nonavbar") ||
-            option.equals("-nooverview")) {
+            option.equals("-nooverview") ||
+            option.equals("-github.inline") ||
+            option.equals("-github.member")) {
             return 1;
         } else if (option.equals("-help")) {
             System.out.println(getText("doclet.usage"));

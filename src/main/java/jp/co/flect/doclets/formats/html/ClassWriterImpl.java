@@ -204,7 +204,9 @@ public class ClassWriterImpl extends SubWriterHolderWriter
 		img.addAttr(HtmlAttr.ALT, "octocat");
 		HtmlTree a = HtmlTree.A(github + "/" + name.replace('.', '/') + ".java", img);
 		a.addAttr(HtmlAttr.STYLE, "margin-left:15px;");
-		a.addAttr(HtmlAttr.TARGET, "_blank");
+		if (!configuration.github_inline) {
+			a.addAttr(HtmlAttr.TARGET, "_blank");
+		}
 		return a;
 	}
 
