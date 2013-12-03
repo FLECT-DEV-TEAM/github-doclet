@@ -86,6 +86,10 @@ public class FieldWriterImpl extends AbstractMemberWriter
         Content fieldDocTree = writer.getMemberTreeHeader();
         Content heading = new HtmlTree(HtmlConstants.MEMBER_HEADING);
         heading.addContent(field.name());
+        Content sourceLink = getSourceLink(field);
+        if (sourceLink != null) {
+            heading.addContent(sourceLink);
+        }
         fieldDocTree.addContent(heading);
         return fieldDocTree;
     }

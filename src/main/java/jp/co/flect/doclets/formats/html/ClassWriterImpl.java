@@ -172,7 +172,7 @@ public class ClassWriterImpl extends SubWriterHolderWriter
         Content heading = HtmlTree.HEADING(HtmlConstants.CLASS_PAGE_HEADING, true,
                 HtmlStyle.title, headerContent);
         heading.addContent(new RawHtml(getTypeParameterLinks(linkInfo)));
-        Content sourceLink = getSourceLink();
+        Content sourceLink = getSourceLink(classDoc);
         if (sourceLink != null) {
 			heading.addContent(sourceLink);
 		}
@@ -181,35 +181,6 @@ public class ClassWriterImpl extends SubWriterHolderWriter
         return bodyTree;
     }
     
-	private Content getSourceLink() {
-		String github = configuration.github;
-		if (github == null) {
-			return null;
-		}
-		String name = classDoc.name();
-		if (name.indexOf(".") != -1) {
-			return null;
-		}
-		if (classDoc.containingPackage() != null) {
-			name = classDoc.containingPackage().name() + "." + name;
-		}
-		int depth = name.split("\\.").length;
-		StringBuilder imgPath = new StringBuilder();
-		for (int i=0; i<depth - 1; i++) {
-			imgPath.append("../");
-		}
-		imgPath.append("resources/octocat.png");
-		HtmlTree img = new HtmlTree(HtmlTag.IMG);
-		img.addAttr(HtmlAttr.SRC, imgPath.toString());
-		img.addAttr(HtmlAttr.ALT, "octocat");
-		HtmlTree a = HtmlTree.A(github + "/" + name.replace('.', '/') + ".java", img);
-		a.addAttr(HtmlAttr.STYLE, "margin-left:15px;");
-		if (!configuration.github_inline) {
-			a.addAttr(HtmlAttr.TARGET, "_blank");
-		}
-		return a;
-	}
-
     /**
      * {@inheritDoc}
      */

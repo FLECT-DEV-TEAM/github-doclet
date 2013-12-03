@@ -654,4 +654,44 @@ public abstract class AbstractMemberWriter {
         else
             return HtmlTree.UL(HtmlStyle.blockList, memberTree);
     }
+    
+	protected Content getSourceLink(Doc doc) {
+		String github = configuration().github;
+		if (github == null || !configuration().github_member) {
+			return null;
+		}
+		SourcePosition pos = doc.position();
+		if (pos == null) {
+			return null;
+		}
+		String name = classdoc.name();
+		if (name.indexOf(".") != -1) {
+			return null;
+		}
+		if (classdoc.containingPackage() != null) {
+			name = classdoc.containingPackage().name() + "." + name;
+		}
+		int depth = name.split("\\.").length;
+		StringBuilder imgPath = new StringBuilder();
+		for (int i=0; i<depth - 1; i++) {
+			imgPath.append("../");
+		}
+		imgPath.append("resources/octocat.png");
+		
+		name = name.replace('.', '/') + ".java";
+		if (pos != null) {
+			name += "#L" + pos.line();
+		}
+		HtmlTree img = new HtmlTree(HtmlTag.IMG);
+		img.addAttr(HtmlAttr.SRC, imgPath.toString());
+		img.addAttr(HtmlAttr.ALT, "octocat");
+		img.addAttr(HtmlAttr.WIDTH, "16");
+		img.addAttr(HtmlAttr.HEIGHT, "16");
+		HtmlTree a = HtmlTree.A(github + "/" + name, img);
+		a.addAttr(HtmlAttr.STYLE, "margin-left:15px;");
+		if (!configuration().github_inline) {
+			a.addAttr(HtmlAttr.TARGET, "_blank");
+		}
+		return a;
+	}
 }

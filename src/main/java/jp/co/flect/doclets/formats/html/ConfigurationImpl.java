@@ -189,7 +189,7 @@ public class ConfigurationImpl extends Configuration {
 
     public String github = null;
     public boolean github_inline = false;
-    public boolean github_member = false;
+    public boolean github_member = true;
     
     /**
      * Constructor. Initialises resource for the

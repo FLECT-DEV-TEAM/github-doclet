@@ -113,6 +113,10 @@ public class ConstructorWriterImpl extends AbstractExecutableMemberWriter
         Content constructorDocTree = writer.getMemberTreeHeader();
         Content heading = new HtmlTree(HtmlConstants.MEMBER_HEADING);
         heading.addContent(constructor.name());
+        Content sourceLink = getSourceLink(constructor);
+        if (sourceLink != null) {
+            heading.addContent(sourceLink);
+        }
         constructorDocTree.addContent(heading);
         return constructorDocTree;
     }

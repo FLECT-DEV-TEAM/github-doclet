@@ -163,6 +163,10 @@ public class AnnotationTypeWriterImpl extends SubWriterHolderWriter
         Content heading = HtmlTree.HEADING(HtmlConstants.CLASS_PAGE_HEADING, true,
                 HtmlStyle.title, headerContent);
         heading.addContent(new RawHtml(getTypeParameterLinks(linkInfo)));
+        Content sourceLink = getSourceLink(annotationType);
+        if (sourceLink != null) {
+			heading.addContent(sourceLink);
+		}
         div.addContent(heading);
         bodyTree.addContent(div);
         return bodyTree;

@@ -101,10 +101,14 @@ public class MethodWriterImpl extends AbstractExecutableMemberWriter
         Content methodDocTree = writer.getMemberTreeHeader();
         Content heading = new HtmlTree(HtmlConstants.MEMBER_HEADING);
         heading.addContent(method.name());
+        Content sourceLink = getSourceLink(method);
+        if (sourceLink != null) {
+            heading.addContent(sourceLink);
+        }
         methodDocTree.addContent(heading);
         return methodDocTree;
     }
-
+    
     /**
      * Get the signature for the given method.
      *

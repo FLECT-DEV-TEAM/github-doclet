@@ -40,6 +40,7 @@ public enum HtmlAttr {
     CLEAR,
     COLS,
     CONTENT,
+    HEIGHT,
     HREF,
     HTTP_EQUIV("http-equiv"),
     ID,
